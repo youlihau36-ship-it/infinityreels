@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfinityReels</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<!-- Tailwind (CDN, config only — no interactive JS anywhere in this page) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Roboto', 'sans-serif'],
+          logo: ['Sen', 'sans-serif'],
+        },
+        colors: {
+          accent: '#4db5ff',
+          dark: '#151515',
+        },
+      },
+    },
+  };
+</script>
+</head>
+
+<!-- Page is permanently dark — no theme toggle -->
+<body class="font-sans text-white bg-dark min-h-screen">
+
+<!-- HEADER 1: InfinityReels logo — scrolls away, NOT sticky -->
+<div class="w-full bg-black text-white border-b border-white/10">
+  <div class="flex items-center justify-between h-16 px-4 md:px-[50px]">
+    
+    <!-- Logo -->
+    <a href="home.html" class="flex items-center gap-2 group">
+      <img src="logo.jpg" alt="logo" class="w-9 h-9 rounded-full object-cover ring-1 ring-white/10 group-hover:ring-accent transition-all">
+      <span class="font-logo text-accent text-xl tracking-tight">InfinityReels</span>
+    </a>
+
+    <!-- Profile -->
+    <div class="relative group">
+      <button class="flex items-center gap-2 cursor-pointer pl-1 pr-2 py-1 rounded-full hover:bg-white/10 transition-colors">
+        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+          <i class="fas fa-user text-white text-sm"></i>
+        </div>
+        <span class="hidden sm:inline text-sm text-white/90 group-hover:text-accent transition-colors">Profile</span>
+        <i class="fas fa-caret-down text-xs text-white/60 group-hover:text-accent transition-colors"></i>
+      </button>
+
+      <!-- Dropdown -->
+      <div class="absolute right-0 mt-2 w-44 bg-neutral-900 border border-white/10 rounded-lg shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+        <a href="#" class="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-accent">My Account</a>
+        <a href="#" class="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-accent">Favorites</a>
+        <a href="#" class="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-accent">Settings</a>
+        <div class="border-t border-white/10 my-1"></div>
+        <a href="#" class="block px-4 py-2 text-sm text-red-400 hover:bg-white/10">Log out</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- HEADER 2: Home / Movies / Contact — STICKY, stays visible on scroll -->
+<div class="w-full bg-black text-white sticky top-0 z-20 border-t border-white/10">
+  <!-- Desktop menu -->
+  <div class="hidden md:flex justify-end items-center h-[45px] px-[50px]">
+    <ul class="flex items-center list-none gap-[30px]">
+      <li class="cursor-pointer font-bold"><a href="home.html">Home</a></li>
+      <li class="cursor-pointer hover:text-accent transition-colors"><a href="movies.html">Movies</a></li>
+      <li class="cursor-pointer hover:text-accent transition-colors"><a href="mailto:visaltnt843@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+  <!-- Mobile menu -->
+  <div class="md:hidden overflow-x-auto">
+    <ul class="flex justify-center space-x-10 list-none gap-6 px-4 py-3 w-full text-sm">
+      <li class="cursor-pointer font-bold whitespace-nowrap"><a href="home.html">Home</a></li>
+      <li class="cursor-pointer whitespace-nowrap hover:text-accent transition-colors"><a href="movies.html">Movies</a></li>
+      <li class="cursor-pointer whitespace-nowrap hover:text-accent transition-colors"><a href="mailto:visaltnt843@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+  <!-- Icon nav: fixed sidebar on desktop, fixed bottom bar on mobile (same icons, different placement) -->
+  <div class="fixed z-20 bg-black flex items-center
+              bottom-0 left-0 w-full h-[56px] justify-around
+              md:top-0 md:bottom-auto md:w-[50px] md:h-full md:flex-col md:justify-start md:gap-10 md:pt-[60px]">
+    <i class="text-white text-xl cursor-pointer fas fa-search hover:text-accent md:hover:scale-125 transition"></i>
+    <a href="home.html"><i class="text-white text-xl cursor-pointer fas fa-home hover:text-accent md:hover:scale-125 transition"></i></a>
+    <a href="https://t.me/movie_speak_khmer"> <i class="text-white text-xl cursor-pointer fas fa-users hover:text-accent md:hover:scale-125 transition"></i></a>
+    <a href="movies.html"><i class="fa-solid fa-video text-white text-xl cursor-pointer hover:text-accent md:hover:scale-125 transition"></i></a>
+  </div>
+
+  <!-- Main Container -->
+  <div class="bg-dark min-h-[calc(100vh-50px)] text-white">
+    <div class="pb-[56px] md:pb-0 md:ml-[50px]">
+
+      <!-- Featured Content 1 -->
+      <div class="h-[45vh] md:h-[50vh] p-6 md:p-[50px] flex flex-col justify-center bg-cover bg-center"
+           style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('https://picsum.photos/seed/genre-thriller/1600/900');">
+        <h1 class="font-logo text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">MIDNIGHT ECHO</h1>
+        <p class="w-full max-w-[500px] text-sm md:text-base text-gray-300 my-4 md:my-8">
+          A detective uncovers a conspiracy that echoes through the city's underworld after one final phone call he was never meant to answer.
+        </p>
+        <button class="bg-accent text-white font-bold px-5 py-2.5 rounded-[10px] w-max hover:brightness-110 transition"><a href="watch.html">WATCH</a></button>
+      </div>
+
+      <!-- Movie List Container 1: same titles, images (genre seeds) and descriptions as movies.html -->
+      <div class="px-4 md:px-5">
+        <h1 class="text-xl md:text-2xl mb-4">NEW RELEASES</h1>
+        <div class="relative overflow-x-auto pb-2">
+          <div class="flex items-start gap-4 md:gap-[30px] w-max">
+
+            <!-- Midnight Echo (Thriller, 2024) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-thriller/400/600" alt="Midnight Echo poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Midnight Echo</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A detective uncovers a conspiracy echoing through the city's underworld.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Silent Horizon (Sci-Fi, 2023) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-scifi/400/600" alt="Silent Horizon poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Silent Horizon</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A stranded crew must decide whether to trust a signal promising rescue.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- The Last Voyage (Drama, 2022) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-drama/400/600" alt="The Last Voyage poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">The Last Voyage</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A retired captain takes one final journey to reconnect with his family.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Crimson Sky (Action, 2024) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-action/400/600" alt="Crimson Sky poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Crimson Sky</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">An elite pilot races to stop a rogue squadron from starting a war.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paper Moonlight (Romance, 2023) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-romance/400/600" alt="Paper Moonlight poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Paper Moonlight</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">Two strangers exchange letters for a year before finally meeting.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- The Hollow Man (Horror, 2021) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-horror/400/600" alt="The Hollow Man poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">The Hollow Man</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A grieving widow moves into a house where something wears the shape of memory.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Laugh Track (Comedy, 2024) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-comedy/400/600" alt="Laugh Track poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Laugh Track</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A washed-up comedian gets one last shot at redemption on live TV.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <i class="hidden md:block fas fa-chevron-right absolute top-[70px] right-0 text-gray-300 opacity-40 text-[120px] pointer-events-none"></i>
+        </div>
+      </div>
+
+      <!-- Movie List Container 2: same titles, images, and descriptions as movies.html -->
+      <div class="px-4 md:px-5 mt-8">
+        <h1 class="text-xl md:text-2xl mb-4">POPULAR</h1>
+        <div class="relative overflow-x-auto pb-2">
+          <div class="flex items-start gap-4 md:gap-[30px] w-max">
+
+            <!-- Glass Empire (Drama, 2022) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-drama/400/600" alt="Glass Empire poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Glass Empire</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A family business crumbles as siblings fight over their father's legacy.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wired Minds (Sci-Fi, 2025) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-scifi/400/600" alt="Wired Minds poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Wired Minds</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">Two AIs gain consciousness and must decide what humanity means to them.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ashes of Dawn (Action, 2023) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-action/400/600" alt="Ashes of Dawn poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Ashes of Dawn</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A soldier returns from war to find his hometown ruled by the enemy.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quiet Rebellion (Drama, 2021) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-drama/400/600" alt="Quiet Rebellion poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Quiet Rebellion</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A small-town teacher sparks a movement she never intended to lead.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Neon Static (Thriller, 2024) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-thriller/400/600" alt="Neon Static poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Neon Static</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A hacker discovers a broadcast hidden inside every screen in the city.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coral Nights (Romance, 2022) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-romance/400/600" alt="Coral Nights poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Coral Nights</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A marine biologist falls for the sailor who keeps returning to her island.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dead Reckoning (Horror, 2023) -->
+            <div class="group w-[150px] sm:w-[200px] md:w-[270px] shrink-0">
+              <div class="relative overflow-hidden rounded-[14px] md:rounded-[20px] aspect-[2/3]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://picsum.photos/seed/genre-horror/400/600" alt="Dead Reckoning poster">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent text-base md:text-lg"></i>
+                    <span class="font-bold text-sm md:text-lg drop-shadow-lg">Dead Reckoning</span>
+                  </div>
+                  <div class="max-h-0 group-hover:max-h-[80px] opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="text-xs md:text-sm text-gray-300 mt-1">A crew lost at sea starts hearing voices that know their darkest secrets.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <i class="hidden md:block fas fa-chevron-right absolute top-[70px] right-0 text-gray-300 opacity-40 text-[120px] pointer-events-none"></i>
+        </div>
+      </div>
+
+      <!-- Featured Content 2 -->
+      <div class="h-[45vh] md:h-[50vh] p-6 md:p-[50px] flex flex-col justify-center bg-cover bg-center mt-8"
+           style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('https://picsum.photos/id/1060/1600/900');">
+        <h1 class="text-4xl md:text-[60px] font-bold text-yellow-400">About</h1>
+        <p class="w-full max-w-[500px] text-sm md:text-base text-gray-300 my-4 md:my-8">
+          InfinityReels brings together every genre in one library, from quiet dramas to loud action, so there's always something new to watch tonight.
+        </p>
+        <button class="bg-accent text-white font-bold px-5 py-2.5 rounded-[10px] w-max hover:brightness-110 transition">WATCH</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

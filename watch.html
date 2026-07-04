@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfinityReels - Beyond Time's Gaze</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<!-- Tailwind (CDN, config only — no interactive JS anywhere in this page) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Roboto', 'sans-serif'],
+          logo: ['Sen', 'sans-serif'],
+        },
+        colors: {
+          accent: '#4db5ff',
+          dark: '#151515',
+          card: '#1e1e1e',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  /* Hide scrollbar for the episode tab strip but keep it scrollable */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+</head>
+
+<!-- Page is permanently dark — no theme toggle -->
+<body class="font-sans text-white bg-dark min-h-screen">
+
+<div class="w-full bg-black text-white border-b border-white/10">
+  <div class="flex items-center justify-between h-16 px-4 md:px-[50px]">
+    
+    <!-- Logo -->
+    <a href="home.html" class="flex items-center gap-2 group">
+      <img src="logo.jpg" alt="logo" class="w-9 h-9 rounded-full object-cover ring-1 ring-white/10 group-hover:ring-accent transition-all">
+      <span class="font-logo text-accent text-xl tracking-tight">InfinityReels</span>
+    </a>
+
+    <!-- Profile -->
+    <div class="relative group">
+      <button class="flex items-center gap-2 cursor-pointer pl-1 pr-2 py-1 rounded-full hover:bg-white/10 transition-colors">
+        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+          <i class="fas fa-user text-white text-sm"></i>
+        </div>
+        <span class="hidden sm:inline text-sm text-white/90 group-hover:text-accent transition-colors">Profile</span>
+        <i class="fas fa-caret-down text-xs text-white/60 group-hover:text-accent transition-colors"></i>
+      </button>
+
+      <!-- Dropdown -->
+      <div class="absolute right-0 mt-2 w-44 bg-neutral-900 border border-white/10 rounded-lg shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+        <a href="#" class="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-accent">My Account</a>
+        <a href="#" class="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-accent">Favorites</a>
+        <a href="#" class="block px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-accent">Settings</a>
+        <div class="border-t border-white/10 my-1"></div>
+        <a href="#" class="block px-4 py-2 text-sm text-red-400 hover:bg-white/10">Log out</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HEADER 2: Home / Movies / Contact — STICKY, stays visible on scroll -->
+  <div class="w-full bg-black text-white sticky top-0 z-20 border-t border-white/10">
+    <!-- Desktop menu -->
+    <div class="hidden md:flex justify-end items-center h-[45px] px-[50px] border-t border-white/10">
+      <ul class="flex items-center list-none gap-[30px]">
+        <li class="cursor-pointer hover:text-accent transition-colors"><a href="home.html">Home</a></li>
+        <li class="cursor-pointer font-bold"><a href="movies.html">Movies</a></li>
+        <li class="cursor-pointer hover:text-accent transition-colors"><a href="mailto:visaltnt843@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden overflow-x-auto border-t border-white/10">
+      <ul class="flex justify-center space-x-10 list-none gap-6 px-4 py-4 w-full text-sm">
+        <li class="cursor-pointer whitespace-nowrap hover:text-accent transition-colors"><a href="home.html">Home</a></li>
+        <li class="cursor-pointer font-bold whitespace-nowrap"><a href="movies.html">Movies</a></li>
+        <li class="cursor-pointer whitespace-nowrap hover:text-accent transition-colors"><a href="mailto:visaltnt843@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+   <!-- Icon nav: fixed sidebar on desktop, fixed bottom bar on mobile (same icons, different placement) -->
+  <div class="fixed z-20 bg-black flex items-center
+              bottom-0 left-0 w-full h-[56px] justify-around
+              md:top-0 md:bottom-auto md:w-[50px] md:h-full md:flex-col md:justify-start md:gap-10 md:pt-[60px]">
+    <i class="text-white text-xl cursor-pointer fas fa-search hover:text-accent md:hover:scale-125 transition"></i>
+    <a href="home.html"><i class="text-white text-xl cursor-pointer fas fa-home hover:text-accent md:hover:scale-125 transition"></i></a>
+    <a href="https://t.me/movie_speak_khmer"> <i class="text-white text-xl cursor-pointer fas fa-users hover:text-accent md:hover:scale-125 transition"></i></a>
+    <a href="movies.html"><i class="fa-solid fa-video text-white text-xl cursor-pointer hover:text-accent md:hover:scale-125 transition"></i></a>
+  </div>
+  <!-- Main Container -->
+  <div class="bg-dark min-h-[calc(100vh-50px)] text-white">
+    <div class="pb-[80px] md:pb-10 md:ml-[64px]">
+
+      <!-- Hero banner -->
+      <div class="relative w-full h-[42vh] md:h-[55vh] bg-cover bg-center"
+           style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(21,21,21,0.15) 55%, #151515 100%),  url('https://picsum.photos/seed/genre-thriller/1600/900');">
+      </div>
+
+      <!-- Title + meta -->
+      <div class="px-4 md:px-[50px] -mt-2">
+        <h1 class="font-logo text-2xl md:text-4xl font-extrabold">MIDNIGHT ECHO</h1>
+
+        <!-- Badges -->
+        <div class="flex flex-wrap items-center gap-2 mt-3">
+          <span class="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-md">Popularity</span>
+          <span class="bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-md">TOP 1</span>       
+        </div>
+
+        <!-- Rating / year / country / episode -->
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 text-sm text-gray-300">
+          <span class="text-accent font-bold"><i class="fas fa-star mr-1"></i>9.9</span>
+          <span class="text-gray-500">|</span>
+          <span>2025</span>
+          <span class="text-gray-500">|</span>
+          <span>EP28</span>
+        </div>
+
+        <!-- Alt title tags -->
+        <div class="flex flex-wrap gap-2 mt-4">
+         
+          <span class="bg-white/10 text-gray-200 text-xs px-3 py-1.5 rounded-full">MIDNIGHT ECHO</span>
+          <span class="bg-white/10 text-gray-200 text-xs px-3 py-1.5 rounded-full">Drama</span>
+           </div>
+
+        <!-- User rating card -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl mt-5 p-5 flex items-center gap-6">
+          <span class="text-4xl font-extrabold text-amber-400">9.5</span>
+          <div>
+            <p class="font-bold text-base md:text-lg">User Rating</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-amber-400 text-sm tracking-wide">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span>
+            </div>
+          </div>
+          <span class="ml-auto text-sm text-gray-400 whitespace-nowrap">64k Times rated</span>
+        </div>
+
+        <!-- Description -->
+        <div class="mt-5">
+          <p class="text-gray-400 text-sm uppercase tracking-wide mb-1">Description:</p>
+          <p class="text-gray-200 text-sm md:text-base leading-relaxed">
+           A detective uncovers a conspiracy that echoes through the city's underworld after one final phone call he was never meant to answer </p>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="flex flex-wrap items-center gap-6 mt-5">
+          
+          <button class="bg-accent hover:bg-accent-600 transition text-white font-bold px-6 py-2.5 rounded-full flex items-center gap-2">
+            <i class="fas fa-play"></i> Play Now
+          </button>
+          <button class="text-gray-200 hover:text-accent transition flex items-center gap-2 text-sm font-medium">
+            <i class="far fa-star"></i> Favorite
+          </button>
+          <button class="text-gray-200 hover:brightness-110 transition flex items-center gap-2 text-sm font-medium">
+            <i class="fas fa-share-alt"></i> Share
+          </button>
+        </div>
+
+      
+
+        <!-- Server / ad-tier tabs -->
+        <div class="relative overflow-x-auto no-scrollbar  mt-5 border-b border-white/10">
+          <div class="flex items-center gap-8 w-max pb-3 ">
+            <button class="flex items-center gap-2 text-accent font-bold text-sm border-b-2 border-accent pb-3 -mb-3 whitespace-nowrap">
+              <i class="fas fa-bolt bg"></i> 4K Ads <span class="bg-accent text-white text-xs px-2 py-0.5 rounded-full">47</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Episode grid -->
+        <div class="grid grid-cols-3 gap-3 mt-5">
+          <!-- Episode button template -->
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP47</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP46</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP45</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP44</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP43</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP42</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP41</button>                     
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP40</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP39</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP38</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP37</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP36</button>  
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP35</button>  
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP34</button>  
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP33</button>  
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP32</button>  
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP31</button>  
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP30</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP29</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP28</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP27</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP26</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP25</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP24</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP23</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP22</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP21</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP20</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP19</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP18</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP17</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP16</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP15</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP14</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP13</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP12</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP11</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP10</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP09</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP08</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP07</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP06</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP05</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP04</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP03</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP02</button>
+          <button class="bg-white/5 border border-white/10 hover:border-accent hover:text-accent transition rounded-xl py-4 font-bold text-sm">EP01</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
